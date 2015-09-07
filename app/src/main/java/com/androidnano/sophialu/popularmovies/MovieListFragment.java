@@ -246,7 +246,7 @@ public class MovieListFragment extends Fragment {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
-            String apiKey = "ed6798c81aeed8c73e546af867778d28";
+            String apiKey = "000000000000000000000000000";
             String page = "1";
             // Will contain the raw JSON response as a string.
             String moviesJsonStr = null;
