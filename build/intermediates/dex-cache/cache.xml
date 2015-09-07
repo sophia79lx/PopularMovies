@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-5d3c6c1bc65a888f45c7c95e9b4f6edc2fc7e6b4.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-017a70030c9281b5a684a4388fa2465038f738fc.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-927054d2301198a8127a8f31528ec43989f0dade.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-de15c950d6f1868b183668e8e7db76d09fcbc7f0.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-f53b97891312fed76c0ecce7eeaa475a33cc8d16.jar" />
+    </item>
+
+</items>
