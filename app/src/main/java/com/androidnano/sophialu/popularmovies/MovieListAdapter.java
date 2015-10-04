@@ -29,7 +29,6 @@ public class MovieListAdapter extends ArrayAdapter<MovieData> {
         ImageView moviePosterView;
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

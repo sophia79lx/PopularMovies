@@ -16,11 +16,74 @@
         <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-017a70030c9281b5a684a4388fa2465038f738fc.jar" />
     </item>
     <item
+        jar="/Users/sophia.lu/Documents/nano_repo/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/sophia.lu/Documents/nano_repo/PopularMovies/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-001cfe3f5c325fb4d5f98c5c8733e6ebe55ef834.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/testapplication/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/testapplication/build/intermediates/pre-dexed/debug/classes-bc88a055eeef818713a0470183761ebc7b973bca.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/Documents/nano_repo/PopularMovies/testapplication/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/sophia.lu/Documents/nano_repo/PopularMovies/testapplication/build/intermediates/pre-dexed/debug/classes-3c51282b5dfffbf415e09b6074d59246f74031ba.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/gson-2.2.4-7b5ca506ce2a34ac98e2d460ace67361cb56e368.jar" />
+    </item>
+    <item
         jar="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-927054d2301198a8127a8f31528ec43989f0dade.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/Documents/nano_repo/PopularMovies/testapplication/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/sophia.lu/Documents/nano_repo/PopularMovies/testapplication/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-1845139b5c815d92375258ca8b3ee7d7e1f6e7c8.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/testapplication/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/testapplication/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-3ce89337d82c38aad7c621f8818e5f9f6475cea1.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/Documents/nano_repo/PopularMovies/testapplication/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/sophia.lu/Documents/nano_repo/PopularMovies/testapplication/build/intermediates/pre-dexed/debug/classes-93650b8d957f0df23241b17924d1b2186c3cad29.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/Documents/nano_repo/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/sophia.lu/Documents/nano_repo/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-5e3cd6a3b22cf099a508b063eb900be0c994b160.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/testapplication/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/testapplication/build/intermediates/pre-dexed/debug/classes-bb7ea9560f1894402da233a1e0adf4031d10ed83.jar" />
     </item>
     <item
         jar="/Users/sophia.lu/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
@@ -35,6 +98,13 @@
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
         <dex dex="/Users/sophia.lu/AndroidStudioProjects/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-f53b97891312fed76c0ecce7eeaa475a33cc8d16.jar" />
+    </item>
+    <item
+        jar="/Users/sophia.lu/Documents/nano_repo/PopularMovies/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/sophia.lu/Documents/nano_repo/PopularMovies/app/build/intermediates/pre-dexed/debug/classes-b893725e348bc7fca2058d88793c7a3d1193f143.jar" />
     </item>
 
 </items>

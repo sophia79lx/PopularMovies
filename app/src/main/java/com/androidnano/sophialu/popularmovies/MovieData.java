@@ -56,7 +56,31 @@ public class MovieData implements Parcelable{
     }
 
 
-    public final Parcelable.Creator<MovieData> CREATOR = new Parcelable.Creator<MovieData>() {
+    public String getMovieTitle() {
+        return movieTitle;
+    }
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public String getMoviePosterPath() {
+        return moviePosterPath;
+    }
+
+    public String getMovieReleaseDate() {
+        return movieReleaseDate;
+    }
+
+    public String getMovieOverview() {
+        return movieOverview;
+    }
+
+    public String getMovieVoteAverage() {
+        return movieVoteAverage;
+    }
+
+    public static final Parcelable.Creator<MovieData> CREATOR = new Parcelable.Creator<MovieData>() {
         @Override
         public MovieData createFromParcel(Parcel parcel) {
             return new MovieData(parcel);

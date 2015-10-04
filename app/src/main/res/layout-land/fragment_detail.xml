@@ -76,28 +76,89 @@
 
                 </LinearLayout>
 
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:orientation="vertical"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     >
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/movie_overview"
                         android:textSize="@dimen/regular_font_size"
                         />
 
-                </FrameLayout>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MARK AS FAVORITE"
+                        android:background="@color/green"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:id="@+id/like_button"/>
+                </LinearLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/title_font_size"
+                    android:text="Trailers"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:background="@drawable/borders"
+                    android:id="@+id/movie_trailer_title"
+                    android:visibility="gone"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/trailer_list"
+                    android:visibility="gone">
+
+                </LinearLayout>
 
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/title_font_size"
+                    android:text="Reviews"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:visibility="gone"
+                    android:background="@drawable/borders"
+                    android:id="@+id/movie_review_title"
+                    />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/review_list"
+                    android:layout_marginBottom="50dp"
+                    android:visibility="gone">
+                </LinearLayout>
+
+            </LinearLayout>
 
 
     </LinearLayout>

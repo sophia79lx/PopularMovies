@@ -1,5 +1,6 @@
 package com.androidnano.sophialu.popularmovies;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,17 +9,23 @@ import android.view.MenuItem;
 
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements MovieListFragment.Callback {
+
+    private boolean mTwoPane;
+    private static final String DETAILFRAGMENT_TAG = "DFTAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new MovieListFragment())
-                    .commit();
+        if (findViewById(R.id.movie_detail_container) != null) {
+            mTwoPane = true;
+        } else {
+            mTwoPane = false;
         }
+
+        MovieListFragment mf = (MovieListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_movieList);
+        mf.setIfTwoPane(mTwoPane);
     }
 
     @Override
@@ -43,6 +50,22 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(MovieData dateUri) {
+        if (mTwoPane) {
+            Bundle args = new Bundle();
+            args.putParcelable(MovieDetailFragment.MOVIE_URI, dateUri);
+
+            MovieDetailFragment fragment = new MovieDetailFragment();
+            fragment.setArguments(args);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.movie_detail_container, fragment, DETAILFRAGMENT_TAG)
+                    .commit();
+        }
     }
 
 }

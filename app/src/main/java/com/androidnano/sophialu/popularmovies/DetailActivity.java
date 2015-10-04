@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.support.v7.widget.ShareActionProvider;
 
 
-
 public class DetailActivity extends ActionBarActivity {
     MovieDetailFragment fragment;
     @Override
@@ -19,11 +18,14 @@ public class DetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, new MovieDetailFragment())
-                    .commit();
 
+            MovieDetailFragment fragment = new MovieDetailFragment();
+            fragment.setArguments(getIntent().getExtras());
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.movie_detail_container, new MovieDetailFragment())
+                    .commit();
         }
+
     }
 
     @Override
@@ -33,7 +35,7 @@ public class DetailActivity extends ActionBarActivity {
 
         MenuItem menuItem = menu.findItem(R.id.action_share);
         FragmentManager fm = getSupportFragmentManager();
-        fragment = (MovieDetailFragment) fm.findFragmentById(R.id.fragment_container);
+        fragment = (MovieDetailFragment) fm.findFragmentById(R.id.movie_detail_container);
 
         ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
 

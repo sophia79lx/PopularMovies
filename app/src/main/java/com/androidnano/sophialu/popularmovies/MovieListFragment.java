@@ -4,17 +4,20 @@ package com.androidnano.sophialu.popularmovies;
  * Created by sophia.lu on 7/28/15.
  */
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -42,14 +46,19 @@ import java.util.HashMap;
  */
 public class MovieListFragment extends Fragment {
 
-
     ArrayList<MovieData> movieL;
     GridView gridView;
     String sortSequence;
     SharedPreferences.Editor editor;
     SharedPreferences prefs;
+    public Context context;
 
     MovieListAdapter movieListAdapter;
+    private static final String TWO_PANE = "two_pane";
+    private static final String SELECTED_MOVIE_POSITION = "selected_movie_position";
+
+    private int mPosition = 0;
+    private boolean mTwoPane = false;
     String sortBy;
 
     @Override
@@ -60,8 +69,17 @@ public class MovieListFragment extends Fragment {
             movieL = new ArrayList<MovieData>();
         } else {
             movieL = savedInstanceState.getParcelableArrayList("movies");
+            mTwoPane = savedInstanceState.getBoolean(TWO_PANE);
+            mPosition = savedInstanceState.getInt(SELECTED_MOVIE_POSITION, 0);
         }
+
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onAttach(Activity activity){
+        super.onAttach(activity);
+        context = getActivity();
     }
 
     public MovieListFragment() {
@@ -69,7 +87,28 @@ public class MovieListFragment extends Fragment {
     }
 
     public void updateMovies(String sortSequence) {
-        new DownloadDataTask().execute(sortSequence);
+        if(!sortSequence.equals("favorite")) {
+            new DownloadDataTask().execute(sortSequence);
+        } else {
+            loadFavoriteMovies();
+        }
+    }
+
+    public void loadFavoriteMovies() {
+        FavoriteMovieSharePreference mSharePreference = new FavoriteMovieSharePreference();
+        ArrayList<String> favorites = mSharePreference.getFavorites(getActivity());
+
+        if (movieListAdapter != null && favorites != null) {
+            movieListAdapter.clear();
+            for (int i = 0; i < movieL.size(); i++) {
+                MovieData item = movieL.get(i);
+                String id = item.getMovieId()+"";
+                if (favorites.contains(id)) {
+                    movieListAdapter.add(item);
+                }
+            }
+        }
+
     }
 
     public void showSortByDialog(){
@@ -77,7 +116,7 @@ public class MovieListFragment extends Fragment {
         // 1. Instantiate an AlertDialog.Builder with its constructor
         AlertDialog.Builder builderS = new AlertDialog.Builder(getActivity());
 
-        String[] options = new String[] {"Sort By Highest-rated", "Sort By Popularity"};
+        String[] options = new String[] {"Sort By Highest-rated", "Sort By Popularity", "Sort By Favorite Movies"};
         int selected = 0;
         String sortByPref = prefs.getString("sortBy", "popularity.desc");
 
@@ -102,6 +141,10 @@ public class MovieListFragment extends Fragment {
                                 sortBy = "popularity.desc";
                                 updateMovies(sortBy);
                                 break;
+                            case 2:
+                                sortBy = "favorite";
+                                updateMovies(sortBy);
+                                break;
                             default:
                                 break;
                         }
@@ -111,8 +154,10 @@ public class MovieListFragment extends Fragment {
         builderS.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
-                editor.putString("sortBy", sortBy)
-                        .commit();
+                if (sortBy != "favorite") {
+                    editor.putString("sortBy", sortBy)
+                            .commit();
+                }
 
             }
         });
@@ -162,10 +207,11 @@ public class MovieListFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         if (movieL != null) {
             outState.putParcelableArrayList("movies", movieL);
+            outState.putInt(SELECTED_MOVIE_POSITION, mPosition);
+            outState.putBoolean(TWO_PANE, mTwoPane);
         }
         super.onSaveInstanceState(outState);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -185,14 +231,10 @@ public class MovieListFragment extends Fragment {
         }
 
         if(savedInstanceState != null) {
-            // read the person list from the saved state
             movieL = savedInstanceState.getParcelableArrayList("movies");
         } else {
-            // load the person list
             movieL = new ArrayList<MovieData>();
-
             if (isNetworkAvailable()){
-
                 updateMovies(sortSequence);
 
             } else {
@@ -209,33 +251,54 @@ public class MovieListFragment extends Fragment {
 
         gridView = (GridView) rootView.findViewById(R.id.movieList);
 
-
-
         movieListAdapter = new MovieListAdapter(getActivity(), movieL);
 
         gridView.setAdapter(movieListAdapter);
 
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MovieData item = (MovieData) movieListAdapter.getItem(position);
+                showDetails(position);
+                mPosition = position;
 
-                Intent intent = new Intent(parent.getContext(), DetailActivity.class);
-                intent.putExtra("movieTitle", item.movieTitle);
-                intent.putExtra("overview", item.movieOverview);
-                intent.putExtra("poster_path", item.moviePosterPath);
-                intent.putExtra("vote_average", item.movieVoteAverage);
-                intent.putExtra("release_date", item.movieReleaseDate);
-
-                startActivity(intent);
             }
         });
-
 
         return rootView;
     }
 
+
+    public void setIfTwoPane (boolean mTwoPane) {
+        this.mTwoPane = mTwoPane;
+    }
+
+    void showDetails(int index) {
+        MovieData item = movieListAdapter.getItem(index);
+        if (mTwoPane) {
+            MovieDetailFragment details = (MovieDetailFragment) getFragmentManager()
+                    .findFragmentById(R.id.movie_detail_container);
+            if (details == null || details.getShownIndex() != index) {
+                ((Callback) getActivity()).onItemSelected(item);
+            }
+        } else {
+            Intent intent = new Intent(getActivity(), DetailActivity.class);
+            intent.putExtra(MovieDetailFragment.MOVIE_URI, item);
+            startActivity(intent);
+        }
+    }
+
+        /**
+         * A callback interface that all activities containing this fragment must
+         * implement. This mechanism allows activities to be notified of item
+         * selections.
+         */
+    public interface Callback {
+        /**
+         * DetailFragmentCallback for when an item has been selected.
+         * @param dateUri
+         */
+        public void onItemSelected(MovieData dateUri);
+    }
 
 
     private class DownloadDataTask extends AsyncTask<String, Void, ArrayList<MovieData>> {
@@ -246,7 +309,8 @@ public class MovieListFragment extends Fragment {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
-            String apiKey = "000000000000000000000000000";
+            //TODO: NEED TO REPLACE WITH THE REAL APIKEY IN README
+            String apiKey = "00000000000000000000000000000";
             String page = "1";
             // Will contain the raw JSON response as a string.
             String moviesJsonStr = null;
@@ -328,7 +392,7 @@ public class MovieListFragment extends Fragment {
             super.onPostExecute(result);
 
             if (result != null) {
-
+                movieL = result;
                 movieListAdapter.clear();
 
                 for (int i = 0; i < result.size(); i++) {
@@ -338,6 +402,14 @@ public class MovieListFragment extends Fragment {
 
             }
             movieListAdapter.notifyDataSetChanged();
+
+            if (mTwoPane && result != null && !result.isEmpty()) {
+                mPosition = 0;
+                ((Callback) getActivity()).onItemSelected(result.get(mPosition));
+            } else if (mTwoPane) {
+                ((Callback) getActivity()).onItemSelected(null);
+            }
+
         }
 
 
